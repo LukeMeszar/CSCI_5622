@@ -40,8 +40,8 @@ class Knearest:
         :param y: Training data output
         :param k: The number of nearest points to consider in classification
         """
-        
-        # Finish this function to store necessary data so you can 
+
+        # Finish this function to store necessary data so you can
         # do classification later
 
         self._kdtree = BallTree(x)
@@ -61,8 +61,18 @@ class Knearest:
         # these indices
         #
         # http://docs.scipy.org/doc/numpy/reference/generated/numpy.median.html
+        occurrenceList = [0]*10
+        for i in range(len(item_indices)):
+            val = self._y[item_indices[i]]
+            occurrenceList[val]+=1
+        maxVal = max(occurrenceList)
+        tiesList = []
+        for i,j in enumerate(occurrenceList):
+            if j == maxVal:
+                tiesList.append(i)
 
-        return self._y[item_indices[0]]
+
+        return median(tiesList)
 
     def classify(self, example):
         """
@@ -75,8 +85,9 @@ class Knearest:
         # Finish this function to find the k closest points, query the
         # majority function, and return the value.
 
-        return self.majority(list(random.randrange(len(self._y)) \
-                                  for x in range(self._k)))
+        knnIndices = self._kdtree.query(example.reshape(1, -1),self._k,False)
+
+        return self.majority(knnIndices[0])
 
     def confusion_matrix(self, test_x, test_y, debug=False):
         """
@@ -94,11 +105,17 @@ class Knearest:
         # function for each example.
 
         d = defaultdict(dict)
-        data_index = 0
-        for xx, yy in zip(test_x, test_y):
-            data_index += 1
-            if debug and data_index % 100 == 0:
-                print("%i/%i for confusion matrix" % (data_index, len(test_x)))
+        d = { key : { key : 0 for key in range(10) } for key in range(10) }
+        # data_index = 0
+        # for xx, yy in zip(test_x, test_y):
+        #     data_index += 1
+        #     if debug and data_index % 100 == 0:
+        #         print("%i/%i for confusion matrix" % (data_index, len(test_x)))
+
+        for i in range(len(test_x)):
+            classifiedVal = self.classify(test_x[i])
+            trueVal = test_y[i]
+            d[trueVal][classifiedVal]+=1
         return d
 
     @staticmethod
@@ -131,6 +148,7 @@ if __name__ == "__main__":
 
     data = Numbers("../data/mnist.pkl.gz")
 
+
     # You should not have to modify any of this code
 
     if args.limit > 0:
@@ -148,4 +166,3 @@ if __name__ == "__main__":
         print("%i:\t" % ii + "\t".join(str(confusion[ii].get(x, 0))
                                        for x in range(10)))
     print("Accuracy: %f" % knn.accuracy(confusion))
-

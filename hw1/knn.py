@@ -61,18 +61,20 @@ class Knearest:
         # these indices
         #
         # http://docs.scipy.org/doc/numpy/reference/generated/numpy.median.html
-        occurrenceList = [0]*10
-        for i in range(len(item_indices)):
-            val = self._y[item_indices[i]]
-            occurrenceList[val]+=1
-        maxVal = max(occurrenceList)
-        tiesList = []
-        for i,j in enumerate(occurrenceList):
-            if j == maxVal:
-                tiesList.append(i)
 
+        valsDict = defaultdict(int)
+        for i in range(len(item_indices)):
+            valsDict[self._y[item_indices[i]]]+=1
+
+        v=list(valsDict.values())
+        maxVal = max(v)
+        tiesList = []
+        for key, val in valsDict.items():
+            if val == maxVal:
+                tiesList.append(key)
 
         return median(tiesList)
+
 
     def classify(self, example):
         """

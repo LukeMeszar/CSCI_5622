@@ -43,7 +43,7 @@ class Knearest:
 
         # Finish this function to store necessary data so you can
         # do classification later
-
+        #print(x[0][0])
         self._kdtree = BallTree(x)
         self._y = y
         self._k = k
@@ -73,7 +73,10 @@ class Knearest:
             if val == maxVal:
                 tiesList.append(key)
 
-        return median(tiesList)
+        if len(tiesList) == 1:
+            return tiesList[0]
+        else:
+            return int(median(tiesList))
 
 
     def classify(self, example):
@@ -107,17 +110,18 @@ class Knearest:
         # function for each example.
 
         d = defaultdict(dict)
-        d = { key : { key : 0 for key in range(10) } for key in range(10) }
-        # data_index = 0
-        # for xx, yy in zip(test_x, test_y):
-        #     data_index += 1
-        #     if debug and data_index % 100 == 0:
-        #         print("%i/%i for confusion matrix" % (data_index, len(test_x)))
+        d = { key : { key : 0 for key in self._y } for key in self._y }
+        data_index = 0
+        for xx, yy in zip(test_x, test_y):
+            data_index += 1
+            if debug and data_index % 100 == 0:
+                print("%i/%i for confusion matrix" % (data_index, len(test_x)))
+            d[yy][self.classify(xx)]+=1
 
-        for i in range(len(test_x)):
-            classifiedVal = self.classify(test_x[i])
-            trueVal = test_y[i]
-            d[trueVal][classifiedVal]+=1
+        # for i in range(len(test_x)):
+        #     classifiedVal = self.classify(test_x[i])
+        #     trueVal = test_y[i]
+        #     d[trueVal][classifiedVal]+=1
         return d
 
     @staticmethod

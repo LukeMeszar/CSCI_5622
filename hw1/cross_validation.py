@@ -16,8 +16,8 @@ random.seed(20170830)
 # for each instance.
 
 # SplitIndices stores the indices for each train/test run,
-# Indices for the training set and the testing set 
-# are respectively in two lists named 
+# Indices for the training set and the testing set
+# are respectively in two lists named
 # `train` and `test`.
 
 SplitIndices = namedtuple("SplitIndices", ["train", "test"])
@@ -26,13 +26,20 @@ def split_cv(length, num_folds):
     """
     This function splits index [0, length - 1) into num_folds (train, test) tuples.
     """
-    splits = [SplitIndices([], []) for _ in range(num_folds)]
+    #splits = [SplitIndices([], []) for _ in range(num_folds)]
+    splits = []
     indices = list(range(length))
     random.shuffle(indices)
     # Finish this function to populate `folds`.
     # All the indices are split into num_folds folds.
     # Each fold is the testing set in a split, and the remaining indices
     # are added to the corresponding training set.
+    length_of_fold = int(length/num_folds)
+    for i in range(num_folds):
+        splits.append(SplitIndices([indices[0:i*length_of_fold]+indices[(i+1)*length_of_fold:length]],\
+        [indices[i*length_of_fold:(i+1)*length_of_fold]]))
+
+    #print(splits)
 
     return splits
 
@@ -44,11 +51,31 @@ def cv_performance(x, y, num_folds, k):
     accuracy_array = []
 
     for split in splits:
-        # Finish this function to use the training instances 
+        # Finish this function to use the training instances
         # indexed by `split.train` to train the classifier,
-        # and then store the accuracy 
-        # on the testing instances indexed by `split.test`
-        
+        # and then store the accuracy
+        # on the testing instances indexed by `split.test
+        train_x = []
+        train_y = []
+        test_x = []
+        test_y = []
+        for trainIndex in split.train:
+            train_x.append(x[trainIndex])
+            train_y.append(y[trainIndex])
+
+        for testIndex in split.test:
+            test_x.append(x[testIndex])
+            test_y.append(y[testIndex])
+        train_x = np.asarray(train_x)
+        test_x = np.asarray(test_x)
+        train_y = np.asarray(train_y)
+        test_y = np.asarray(test_y)
+        #print(train_y)
+        #print(test_x)
+
+        knn = Knearest(train_x[0], train_y[0], k)
+        confusion = knn.confusion_matrix(test_x[0], test_y[0])
+        accuracy = knn.accuracy(confusion)
         accuracy_array.append(accuracy)
 
     return np.mean(accuracy_array)
@@ -59,7 +86,7 @@ if __name__ == "__main__":
     parser.add_argument('--limit', type=int, default=-1,
                         help="Restrict training to this many examples")
     args = parser.parse_args()
-    
+
     data = Numbers("../data/mnist.pkl.gz")
     x, y = data.train_x, data.train_y
     if args.limit > 0:
@@ -74,4 +101,3 @@ if __name__ == "__main__":
     confusion = knn.confusion_matrix(data.test_x, data.test_y)
     accuracy = knn.accuracy(confusion)
     print("Accuracy for chosen best k= %d: %f" % (best_k, accuracy))
-

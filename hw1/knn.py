@@ -110,18 +110,19 @@ class Knearest:
         # function for each example.
 
         d = defaultdict(dict)
-        d = { key : { key : 0 for key in self._y } for key in self._y }
+        d = { key : { key : 0 for key in sorted(self._y) } for key in sorted(self._y) }
         data_index = 0
-        for xx, yy in zip(test_x, test_y):
-            data_index += 1
-            if debug and data_index % 100 == 0:
-                print("%i/%i for confusion matrix" % (data_index, len(test_x)))
-            d[yy][self.classify(xx)]+=1
+        # for xx, yy in zip(test_x, test_y):
+        #     data_index += 1
+        #     if debug and data_index % 100 == 0:
+        #         print("%i/%i for confusion matrix" % (data_index, len(test_x)))
+        #     d[yy][self.classify(xx)]+=1
 
-        # for i in range(len(test_x)):
-        #     classifiedVal = self.classify(test_x[i])
-        #     trueVal = test_y[i]
-        #     d[trueVal][classifiedVal]+=1
+        for i in range(len(test_x)):
+            classifiedVal = self.classify(test_x[i])
+            trueVal = test_y[i]
+            d[trueVal][classifiedVal]+=1
+        #print(d)
         return d
 
     @staticmethod
@@ -159,6 +160,7 @@ if __name__ == "__main__":
 
     if args.limit > 0:
         print("Data limit: %i" % args.limit)
+        print(args.k)
         knn = Knearest(data.train_x[:args.limit], data.train_y[:args.limit],
                        args.k)
     else:

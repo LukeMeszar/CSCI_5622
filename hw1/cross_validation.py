@@ -4,7 +4,7 @@ from collections import namedtuple
 import numpy as np
 from knn import Knearest, Numbers
 
-random.seed(20170830)
+random.seed(45)
 
 
 # READ THIS FIRST

@@ -54,8 +54,8 @@ class LogReg:
         :param num_features: The number of features (including bias)
         :param eta: A function that takes the iteration as an argument (the default is a constant value)
         """
-
-        self.w = np.zeros(num_features)
+        self.num_features = num_features
+        self.w = np.zeros(num_features) #beta
         self.eta = eta
         self.last_update = defaultdict(int)
 
@@ -89,8 +89,13 @@ class LogReg:
         :return: Return the new value of the regression coefficients
         """
 
-        # TODO: Finish this function to do a single stochastic gradient descent update
-        # and return the updated weight vector
+        beta_times_x_i  = 0
+        for index in range(len(x_i)):
+            beta_times_x_i += x_i[index]*self.w[index]
+        pi_j = np.exp(beta_times_x_i)/(1+np.exp(beta_times_x_i))
+
+        for index in range(self.num_features):
+            self.w[index] = self.w[index] + self.eta*(y - pi_j)*x_i[index]
 
         return self.w
 
@@ -106,7 +111,9 @@ def sigmoid(score, threshold=20.0):
     # TODO: Finish this function to return the output of applying the sigmoid
     # function to the input score (Please do not use external libraries)
 
-    return 1.0
+    sigma = 1/(1+np.exp(-score))
+
+    return sigma
 
 if __name__ == "__main__":
     argparser = argparse.ArgumentParser()
@@ -126,6 +133,12 @@ if __name__ == "__main__":
     iteration = 0
     for epoch in range(args.passes):
         data.train_x, data.train_y = Numbers.shuffle(data.train_x, data.train_y)
+
+        for x,y in zip(data.train_x, data.train_y):
+            lr.sgd_update(x,y)
+
+        print(epoch)
+        print(lr.progress(data.valid_x, data.valid_y))
 
         # TODO: Finish the code to loop over the training data and perform a stochastic
         # gradient descent update on each training example.

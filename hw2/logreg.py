@@ -134,16 +134,16 @@ if __name__ == "__main__":
 
     # Iterations
     iteration = 0
-    measuring_points = [10,20,50,100,200,500,1000,2000,5000]
+    measuring_points = [10,20,50,80,100,150,200,500,1000,2000,5000]
     for epoch in range(args.passes):
         data.train_x, data.train_y = Numbers.shuffle(data.train_x, data.train_y)
         counter = 0
         for x,y in zip(data.train_x, data.train_y):
             lr.sgd_update(x,y)
-            # if counter in measuring_points:
-            #     accuracy = lr.progress(data.test_x, data.test_y)
-            #     print(counter, ",", accuracy[1])
-            # counter += 1
+            if counter in measuring_points:
+                accuracy = lr.progress(data.test_x, data.test_y)
+                print(counter, ",", accuracy[1])
+            counter += 1
 
 
 

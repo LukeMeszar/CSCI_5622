@@ -115,6 +115,8 @@ def sigmoid(score, threshold=20.0):
 
     return sigma
 
+
+
 if __name__ == "__main__":
     argparser = argparse.ArgumentParser()
     argparser.add_argument("--eta", help="Initial SGD learning rate",
@@ -132,20 +134,19 @@ if __name__ == "__main__":
 
     # Iterations
     iteration = 0
+    measuring_points = [10,20,50,100,200,500,1000,2000,5000]
     for epoch in range(args.passes):
         data.train_x, data.train_y = Numbers.shuffle(data.train_x, data.train_y)
-
+        counter = 0
         for x,y in zip(data.train_x, data.train_y):
             lr.sgd_update(x,y)
+            # if counter in measuring_points:
+            #     accuracy = lr.progress(data.test_x, data.test_y)
+            #     print(counter, ",", accuracy[1])
+            # counter += 1
 
-        print(epoch)
-        print(lr.progress(data.valid_x, data.valid_y))
 
-        accuracy = lr.progress(data.test_x, data.test_y)
-        print(accuracy)
-        # filename = args.fn
-        # f = open(filename, 'a')
-        # f.write(str(args.eta)+','+str(accuracy[0])+','+str(accuracy[1])+'\n')
+
 
         # TODO: Finish the code to loop over the training data and perform a stochastic
         # gradient descent update on each training example.

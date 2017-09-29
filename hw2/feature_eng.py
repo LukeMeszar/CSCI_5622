@@ -68,7 +68,8 @@ class TextLengthTransformer(BaseEstimator, TransformerMixin):
 class pos_words(BaseEstimator, TransformerMixin):
 
     def __init__(self):
-        self.pos_words = ["absolute", "amazing", "approve", "attractive", "awesome", "beautiful", "brilliant", "creative", "delight", "enchanting", "excellent", "exciting", "fabulous", "fantastic", "favorable", "fun", "friendly", "funny", "genius", "gorgeous", "good", "great", "happy", "imagine", "impress", "joy", "laug", "love", "marvelous", "master", "nice", "perfect", "pleasant", "popular", "positive", "remarkable", "respect", "reward", "right", "satisfactory", "simple", "smile", "success", "super", "terrific", "thrill", "victorious", "victory", "whole", "wonderful", "wondrous", "wow", "yes"]
+        # self.pos_words = ["absolute", "amazing", "approve", "attractive", "awesome", "beautiful", "brilliant", "creative", "delight", "enchanting", "excellent", "exciting", "fabulous", "fantastic", "favorable", "fun", "friendly", "funny", "genius", "gorgeous", "good", "great", "happy", "imagine", "impress", "joy", "laugh", "love", "marvelous", "master", "masterpiece", "nice", "perfect", "pleasant", "popular", "positive", "remarkable", "respect", "reward", "right", "satisfactory", "simple", "smile", "success", "super", "terrific", "thrill", "victorious", "victory", "whole", "wonderful", "wondrous", "wow", "yes"]
+        self.pos_words = ["absolute", "amazing", "approve", "attractive", "awesome", "beautiful", "brilliant", "creative", "delight", "enchanting", "excellent", "exciting", "fabulous", "fantastic", "favorable", "fun", "friendly", "funny", "genius", "gorgeous", "good", "great"]
 
     def fit(self, examples):
         return self
@@ -92,7 +93,9 @@ class pos_words(BaseEstimator, TransformerMixin):
 class neg_words(BaseEstimator, TransformerMixin):
 
     def __init__(self):
-        self.pos_words = ["appalling", "atrocious", "awful", "bad", "boring", "confused", "depressed", "deprived", "disgusting", "dismal", "dreadful", "dreary", "fail", "hate", "hideous", "horrible", "insane", "loser", "messy", "negative", "no", "offensive", "pain", "painful", "reject", "repulsive", "sad", "sick", "sorry", "stupid", "terrible", "ugly", "unhappy", "upset", "zero"]
+        self.neg_words = ["appalling", "atrocious", "awful", "bad", "boring", "banal", "beware", "confused", "depressed", "deprived", "disgusting", "disrupt", "dismal", "dreadful", "dreary", "dark", "fail", "hate", "hideous", "horrible", "insane", "loser", "messy", "negative", "no", "offensive", "pain", "painful", "pest", "reject", "repulsive", "resent", "sad", "sorrow", "sick", "sorry", "stupid", "terrible", "tired", "ugly", "unhappy", "upset", "zero"]
+        # self.neg_words = ["appalling", "atrocious", "awful", "bad", "boring", "banal", "beware", "confused", "depressed", "deprived", "disgusting", "disrupt", "dismal", "dreadful"]
+        # self.neg_words = ["appalling", "atrocious", "awful"]
 
     def fit(self, examples):
         return self
@@ -104,7 +107,7 @@ class neg_words(BaseEstimator, TransformerMixin):
         for ex in examples:
             words = nltk.word_tokenize(ex)
             for word in words:
-                for pw in self.pos_words:
+                for pw in self.neg_words:
                     if pw in word:
                         features[i, 0] += 1
             features[i, 0] /= len(words)
@@ -113,7 +116,7 @@ class neg_words(BaseEstimator, TransformerMixin):
         return features
 
 
-class suffix(BaseEstimator, TransformerMixin):
+class Suffixes(BaseEstimator, TransformerMixin):
 
     def __init__(self):
         self.suffixes = ['e', 'the', 's', 'of', 'd', 'he', 'a', 't', 'n', 'to', 'in', 'and', 'y', 'r', 'is', 'f', 'o', 'ed', 'on','nd', 'as', 'l', 'g', 'at', 'ng', 'er', 'it', 'ing', 'h', 'or', 'es', 're', 'i', 'an', 'was', 'be', 'his', 'for', 'm', 'ly', 'by', 'ion', 'en', 'al', 'nt', 'hat', 'st', 'th', 'tion', 'me', 'll', 'her', 'le', 'ce', 'ts', 'that', 've', 'se', 'had', 'ut',  'are', 'not', 'ent', 'ch', 'k', 'w', 'ld', 'but', 'rs', 'ted', 'one', 'ere', 'ne', 'we', 'all', 'ns', 'ith', 'ad', 'ry', 'with', 'te', 'so', 'out', 'if', 'you', 'no', 'ay', 'ty']
@@ -155,17 +158,6 @@ class Tfidf(BaseEstimator,TransformerMixin):
     def transform(self,examples):
         return self.tfidf.transform(examples)
 
-class Suffixes(BaseEstimator, TransformerMixin):
-    def __init__(self):
-        self.suffixes = ['e', 'the', 's', 'of', 'd', 'he', 'a', 't', 'n', 'to', 'in', 'and', 'y', 'r', 'is', 'f', 'o', 'ed', 'on','nd', 'as', 'l', 'g', 'at', 'ng', 'er', 'it', 'ing', 'h', 'or', 'es', 're', 'i', 'an', 'was', 'be', 'his', 'for', 'm', 'ly', 'by', 'ion', 'en', 'al', 'nt', 'hat', 'st', 'th', 'tion', 'me', 'll', 'her', 'le', 'ce', 'ts', 'that', 've', 'se', 'had', 'ut',  'are', 'not', 'ent', 'ch', 'k', 'w', 'ld', 'but', 'rs', 'ted', 'one', 'ere', 'ne', 'we', 'all', 'ns', 'ith', 'ad', 'ry', 'with', 'te', 'so', 'out', 'if', 'you', 'no', 'ay', 'ty']
-
-    def fit(self,examples):
-        return self
-    def transform(self,examples):
-        features = {}
-        for suffix in self.suffixes:
-            features['endswith({})'.format(suffix)] = word.lower().endswith(suffix)
-        return features
 
 
 
@@ -181,22 +173,22 @@ class Featurizer:
             #     ('selector', ItemSelector(key='text')),
             #     ('text_length', TextLengthTransformer())
             # ])),
-            ('ngrams', Pipeline([
-                ('selector', ItemSelector(key='text')),
-                ('n_grmas', NGrams())
-            ])),
+            # ('ngrams', Pipeline([
+            #     ('selector', ItemSelector(key='text')),
+            #     ('n_grmas', NGrams())
+            # ])),
             # ('tfidf', Pipeline([
             #     ('selector', ItemSelector(key='text')),
             #     ('tfidf', Tfidf())
             # ])),
             # ('suffix', Pipeline([
             #     ('selector', ItemSelector(key='text')),
-            #     ('suffix', suffix()),
+            #     ('suffix', Suffixes()),
             # ])),
-            # ('pos_words', Pipeline([
-            #     ('selector', ItemSelector(key='text')),
-            #     ('positive_words', pos_words()),
-            # ])),
+            ('pos_words', Pipeline([
+                ('selector', ItemSelector(key='text')),
+                ('positive_words', pos_words()),
+            ])),
             # ('neg_words', Pipeline([
             #     ('selector', ItemSelector(key='text')),
             #     ('negative_words', neg_words()),

@@ -89,7 +89,7 @@ class LogReg:
         :return: Return the new value of the regression coefficients
         """
 
-        beta_times_x_i  = 0
+        beta_times_x_i = 0
         for index in range(len(x_i)):
             beta_times_x_i += x_i[index]*self.w[index]
         pi_j = np.exp(beta_times_x_i)/(1+np.exp(beta_times_x_i))
@@ -119,8 +119,9 @@ if __name__ == "__main__":
     argparser = argparse.ArgumentParser()
     argparser.add_argument("--eta", help="Initial SGD learning rate",
                            type=float, default=0.1, required=False)
-    argparser.add_argument("--passes", help="Number of passes through training data",
+    argparser.add_argument("--passes",  help="Number of passes through training data",
                            type=int, default=1, required=False)
+    argparser.add_argument("--fn", help="none", type=str, default="output.csv", required=False)
 
     args = argparser.parse_args()
 
@@ -139,6 +140,12 @@ if __name__ == "__main__":
 
         print(epoch)
         print(lr.progress(data.valid_x, data.valid_y))
+
+        accuracy = lr.progress(data.test_x, data.test_y)
+        print(accuracy)
+        # filename = args.fn
+        # f = open(filename, 'a')
+        # f.write(str(args.eta)+','+str(accuracy[0])+','+str(accuracy[1])+'\n')
 
         # TODO: Finish the code to loop over the training data and perform a stochastic
         # gradient descent update on each training example.

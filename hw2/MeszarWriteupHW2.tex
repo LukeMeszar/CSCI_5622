@@ -1,0 +1,133 @@
+\documentclass[12pt]{article}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{epic}
+\usepackage{eepic}
+%\usepackage{hyperref}
+\usepackage{listings}
+\usepackage{float}
+\usepackage{graphicx}
+\usepackage{fancyhdr}
+\usepackage{color}
+\usepackage{enumitem}
+\usepackage[letterpaper, margin=1in]{geometry}
+\usepackage{cleveref}
+
+\newcommand{\C}{\mathbf{C}}
+\newcommand{\R}{\mathbf{R}}
+\newcommand{\Q}{\mathbf{Q}}
+\newcommand{\Z}{\mathbf{Z}}
+\newcommand{\N}{\mathbf{N}}
+\newcommand{\E}{\mathbf{E}}
+\newcommand{\B}{\mathbf{B}}
+\newcommand{\F}{\mathbf{F}}
+\newcommand{\U}{\mathbf{U}}
+\newcommand{\V}{\mathbf{V}}
+\newcommand{\J}{\mathbf{J}}
+\newcommand{\x}{\mathbf{x}}
+\newcommand{\y}{\mathbf{y}}
+\newcommand{\z}{\mathbf{z}}
+\newcommand{\Sb}{\mathbf{S}}
+\newcommand{\Cs}{\mathscr{C}}
+\newcommand{\As}{\mathscr{A}}
+\newcommand{\I}{\textnormal{\textbf{I}}}
+\newcommand{\Id}{\dot{\textnormal{\textbf{I}}}}
+\newcommand{\Top}{\textnormal{\textbf{Top}}}
+\newcommand{\hTop}{\textnormal{\textbf{hTop}}}
+\newcommand{\Groups}{\textnormal{\textbf{Groups}}}
+\newcommand{\Set}{\textnormal{\textbf{Set}}}
+\newcommand{\Xib}{\mathbf{\Xi}}
+\newcommand{\Sym}{\text{Sym}}
+\newcommand{\prid}[1]{\langle #1 \rangle}
+\newcommand{\apoly}[1]{a_{#1} + a_{#1}x+ a_{#1}x^2 + \cdots + a_{#1}x^n}
+\newcommand{\dist}{\textnormal{dist}}
+\newcommand{\ti}[1]{\textit{#1}}
+\newcommand{\tb}[1]{\textnormal{\textbf{#1}}}
+\newcommand{\es}{\emptyset}
+\newcommand{\sst}{\subset}
+\newcommand{\ssteq}{\subseteq}
+\newcommand{\func}[3]{#1: #2 \to #3}
+\newcommand{\inte}[1]{\textnormal{int}(#1)}
+\newcommand{\bdr}[1]{\textnormal{bdry}(#1)}
+\newcommand{\ifff}{if and only if }
+\newcommand{\st}{such that }
+\newcommand{\wrt}{with respect to }
+\newcommand{\tspace}[1]{\text{T}_#1}
+\newcommand{\mathdash}{\hbox{-}}
+\newcommand{\diam}[1]{\textnormal{diam}(#1)}
+\newcommand{\setst}{\hspace{1mm} | \hspace{1mm} }
+\newcommand{\supp}{\textnormal{support}}
+\newcommand{\clos}{\textnormal{closure}}
+\newcommand{\rel}{\textnormal{rel }}
+\newcommand{\Hom}{\textnormal{Hom}}
+\newcommand{\obj}{\textnormal{obj}}
+\newcommand{\varlisto}[2]{#1_1,#1_2,\ldots,#1_{#2}}
+\newcommand{\varlistz}[2]{#1_0,#1_1,\ldots,#1_{#2}}
+\newcommand{\finv}[2]{#1^{-1}(#2)}
+\newcommand{\disu}{\rotatebox[origin=c]{90}{$\models$}}
+\newcommand{\rank}{\textnormal{rank }}
+\newcommand{\card}{\textnormal{card }}
+\newcommand{\im}{\textnormal{im }}
+\newcommand{\cls}{\textnormal{cls }}
+\newcommand{\rev}{\textnormal{rev }}
+\newcommand{\defeq}{\mathrel{\stackrel{\makebox[0pt]{\mbox{\normalfont\tiny def}}}{=}}}
+\newcommand{\Err}{\textnormal{Err}}
+\newcommand{\Var}{\textnormal{Var}}
+\newcommand{\Ev}{\textnormal{E}}
+
+\renewcommand{\epsilon}{\varepsilon}
+
+
+\newtheorem*{solution*}{Solution}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{proposition}{Proposition}[theorem]
+\newtheorem{lemma}[theorem]{Lemma}
+\theoremstyle{definition}
+\newtheorem*{definition}{Definition}
+\newtheorem*{remark}{Remark}
+\newtheorem*{remarks}{Remarks}
+
+
+\renewcommand\qedsymbol{$\blacksquare$}
+
+\author{Luke Meszar}
+\date{September 15th, 2017}
+\title{CSCI 5622 Homework 1}
+
+\begin{document}
+	\thispagestyle{empty}
+	
+	% --- Header Box --- %
+	\newlength{\boxlength}\setlength{\boxlength}{\textwidth}
+	\addtolength{\boxlength}{-4mm}
+	
+	\begin{center}\framebox{\parbox{\boxlength}{\bf
+				Machine Learning \hfill Homework 2\\
+				CSCI 5622 Fall 2017 \hfill Due Time Sep 29, 2017\\
+				Name: Luke Meszar \hfill CU identitykey: lume0018
+		}}
+	\end{center}
+	\section{Logistic Regression (40pts)}																																									
+	\begin{solution*}\leavevmode
+		\begin{enumerate}[label=\arabic*.,font=\upshape]
+			\item \textnormal{What is the role of the learning rate (eta) on the efficiency of convergence during training?}
+			\item \textnormal{What is the role of the number of epochs on test accuracy?}
+		\end{enumerate}
+	\end{solution*}
+	\section{Feature Engineering (40 points)}
+	\begin{enumerate}
+		\item \textnormal{What custom features did you add/try (other than n-grams)? How did those additional features
+			affect the model performance? Why do you think those additional features helped/hurt
+			the model performance?}
+		\item \textnormal{What are unigrams, bigrams, and n-grams? When you added those features to the FeatureUnion,
+			what happened to the model performance? Why do these features help/hurt?}
+	\end{enumerate}
+\section{ Gradient Descent Learning Rule for Multi-class Logistic Regression (20 pts)}
+	\begin{solution*}
+		\begin{enumerate}
+			\item \textnormal{Derive the negative log likelihood for multi-class logistic regression.}
+			\item \textnormal{The gradient descent learning rule for optimizing weight vectors generalizes to the following form: $\beta^{t+1}_j = \beta^t_j - \eta \nabla \beta^t_j$ where $\eta$ is the learning rate. Find the $\nabla_{c,j}$ (the parameter for
+				feature $x_j$ in class $c$) for a multi-class logistic regression model.}
+		\end{enumerate}
+	\end{solution*}
+\end{document}

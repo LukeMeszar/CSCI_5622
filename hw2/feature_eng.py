@@ -1,9 +1,11 @@
 import os
 import json
 from csv import DictReader, DictWriter
+import nltk
 
 import numpy as np
 from numpy import array
+import sys
 
 from sklearn.feature_extraction.text import CountVectorizer, TfidfVectorizer
 from sklearn.linear_model import SGDClassifier
@@ -63,6 +65,109 @@ class TextLengthTransformer(BaseEstimator, TransformerMixin):
 
 # TODO: Add custom feature transformers for the movie review data
 
+class pos_words(BaseEstimator, TransformerMixin):
+
+    def __init__(self):
+        self.pos_words = ["absolute", "amazing", "approve", "attractive", "awesome", "beautiful", "brilliant", "creative", "delight", "enchanting", "excellent", "exciting", "fabulous", "fantastic", "favorable", "fun", "friendly", "funny", "genius", "gorgeous", "good", "great", "happy", "imagine", "impress", "joy", "laug", "love", "marvelous", "master", "nice", "perfect", "pleasant", "popular", "positive", "remarkable", "respect", "reward", "right", "satisfactory", "simple", "smile", "success", "super", "terrific", "thrill", "victorious", "victory", "whole", "wonderful", "wondrous", "wow", "yes"]
+
+    def fit(self, examples):
+        return self
+
+    def transform(self, examples):
+        # If the word contains one of the common negative words, increase the count
+        features = np.zeros((len(examples), 1))
+        i = 0
+        for ex in examples:
+            words = nltk.word_tokenize(ex)
+            for word in words:
+                for pw in self.pos_words:
+                    if pw in word:
+                        features[i, 0] += 1
+            features[i, 0] /= len(words)
+            i += 1
+
+        return features
+
+
+class neg_words(BaseEstimator, TransformerMixin):
+
+    def __init__(self):
+        self.pos_words = ["appalling", "atrocious", "awful", "bad", "boring", "confused", "depressed", "deprived", "disgusting", "dismal", "dreadful", "dreary", "fail", "hate", "hideous", "horrible", "insane", "loser", "messy", "negative", "no", "offensive", "pain", "painful", "reject", "repulsive", "sad", "sick", "sorry", "stupid", "terrible", "ugly", "unhappy", "upset", "zero"]
+
+    def fit(self, examples):
+        return self
+
+    def transform(self, examples):
+        # If the word contains one of the common positive words, increase the count
+        features = np.zeros((len(examples), 1))
+        i = 0
+        for ex in examples:
+            words = nltk.word_tokenize(ex)
+            for word in words:
+                for pw in self.pos_words:
+                    if pw in word:
+                        features[i, 0] += 1
+            features[i, 0] /= len(words)
+            i += 1
+
+        return features
+
+
+class suffix(BaseEstimator, TransformerMixin):
+
+    def __init__(self):
+        self.suffixes = ['e', 'the', 's', 'of', 'd', 'he', 'a', 't', 'n', 'to', 'in', 'and', 'y', 'r', 'is', 'f', 'o', 'ed', 'on','nd', 'as', 'l', 'g', 'at', 'ng', 'er', 'it', 'ing', 'h', 'or', 'es', 're', 'i', 'an', 'was', 'be', 'his', 'for', 'm', 'ly', 'by', 'ion', 'en', 'al', 'nt', 'hat', 'st', 'th', 'tion', 'me', 'll', 'her', 'le', 'ce', 'ts', 'that', 've', 'se', 'had', 'ut',  'are', 'not', 'ent', 'ch', 'k', 'w', 'ld', 'but', 'rs', 'ted', 'one', 'ere', 'ne', 'we', 'all', 'ns', 'ith', 'ad', 'ry', 'with', 'te', 'so', 'out', 'if', 'you', 'no', 'ay', 'ty']
+         #common suffixes
+
+    def fit(self, examples):
+        return self
+
+    def transform(self, examples):
+        # in crease the count if the word ends in one of the common suffixes
+        features = np.zeros((len(examples), 1))
+        i = 0
+        for ex in examples:
+            words = nltk.word_tokenize(ex) # Split into list of words
+            for word in words:
+                for suffix in self.suffixes:
+                    if word.lower().endswith(suffix):
+                        features[i, 0] += 1
+            features[i, 0] /= len(words)
+            i += 1
+        return features
+
+
+class NGrams(BaseEstimator, TransformerMixin):
+    def __init__(self):
+        self.cv = CountVectorizer(analyzer='word',ngram_range=(1,2))
+
+    def fit(self,examples):
+        return self.cv.fit(examples)
+    def transform(self,examples):
+        return self.cv.transform(examples)
+
+class Tfidf(BaseEstimator,TransformerMixin):
+    def __init__(self):
+        self.tfidf = TfidfVectorizer(analyzer='word',ngram_range=(1,2))
+
+    def fit(self,examples):
+        return self.tfidf.fit(examples)
+    def transform(self,examples):
+        return self.tfidf.transform(examples)
+
+class Suffixes(BaseEstimator, TransformerMixin):
+    def __init__(self):
+        self.suffixes = ['e', 'the', 's', 'of', 'd', 'he', 'a', 't', 'n', 'to', 'in', 'and', 'y', 'r', 'is', 'f', 'o', 'ed', 'on','nd', 'as', 'l', 'g', 'at', 'ng', 'er', 'it', 'ing', 'h', 'or', 'es', 're', 'i', 'an', 'was', 'be', 'his', 'for', 'm', 'ly', 'by', 'ion', 'en', 'al', 'nt', 'hat', 'st', 'th', 'tion', 'me', 'll', 'her', 'le', 'ce', 'ts', 'that', 've', 'se', 'had', 'ut',  'are', 'not', 'ent', 'ch', 'k', 'w', 'ld', 'but', 'rs', 'ted', 'one', 'ere', 'ne', 'we', 'all', 'ns', 'ith', 'ad', 'ry', 'with', 'te', 'so', 'out', 'if', 'you', 'no', 'ay', 'ty']
+
+    def fit(self,examples):
+        return self
+    def transform(self,examples):
+        features = {}
+        for suffix in self.suffixes:
+            features['endswith({})'.format(suffix)] = word.lower().endswith(suffix)
+        return features
+
+
 
 class Featurizer:
     def __init__(self):
@@ -72,10 +177,30 @@ class Featurizer:
 
         # TODO: Add any new feature transformers or other features to the FeatureUnion
         self.all_features = FeatureUnion([
-            ('text_stats', Pipeline([
+            # ('text_stats', Pipeline([
+            #     ('selector', ItemSelector(key='text')),
+            #     ('text_length', TextLengthTransformer())
+            # ])),
+            ('ngrams', Pipeline([
                 ('selector', ItemSelector(key='text')),
-                ('text_length', TextLengthTransformer())
+                ('n_grmas', NGrams())
             ])),
+            # ('tfidf', Pipeline([
+            #     ('selector', ItemSelector(key='text')),
+            #     ('tfidf', Tfidf())
+            # ])),
+            # ('suffix', Pipeline([
+            #     ('selector', ItemSelector(key='text')),
+            #     ('suffix', suffix()),
+            # ])),
+            # ('pos_words', Pipeline([
+            #     ('selector', ItemSelector(key='text')),
+            #     ('positive_words', pos_words()),
+            # ])),
+            # ('neg_words', Pipeline([
+            #     ('selector', ItemSelector(key='text')),
+            #     ('negative_words', neg_words()),
+            # ])),
         ])
 
     def train_feature(self, examples):
@@ -107,7 +232,7 @@ if __name__ == "__main__":
         if not l in labels:
             labels.append(l)
 
-    print("Label set: %s\n" % str(labels))
+    #print("Label set: %s\n" % str(labels))
 
     # Here we collect the train features
     # The inner dictionary contains certain pieces of the input data that we
@@ -125,7 +250,7 @@ if __name__ == "__main__":
     #print(set(y_train))
 
     # Train classifier
-    lr = SGDClassifier(loss='log', penalty='l2', alpha=0.0001, max_iter=15000, shuffle=True, verbose=2)
+    lr = SGDClassifier(loss='log', penalty='l2', alpha=0.0001, max_iter=10000, shuffle=True, verbose=1)
 
     lr.fit(feat_train, y_train)
     y_pred = lr.predict(feat_train)

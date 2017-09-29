@@ -1,0 +1,11 @@
+feature_eng:
+all features: accuracy: 0.807
+only n-grams: accuracy: 0.807
+only suffix: 0.57
+only positive_words: 0.6
+only negative_words: 0.635
+only_tdidf: 0.825
+
+epochs:
+1: accuracy valid: 0.979, test: 0.978
+2: accuracy valid: 0.944, test: 0.935 

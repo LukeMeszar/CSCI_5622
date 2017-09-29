@@ -131,7 +131,7 @@
 				\caption{Testing how the number of epochs affects accuracy with $\eta = 0.1$}
 				\label{fig:epochvsaccuracy}
 			\end{figure}
-			From \cref{fig:epochvsaccuracy} it is clear that the number of epochs has almost no effect on accuracy. There is some noise in the data, but for the most part, the accuracy is constant with respect to the number of epochs. This makes sense considering the size of an epoch is 9830. From \cref{fig:etavsaccuracy} we see that the accuracy at $\eta = 0.1$ evens out at 5000. Thus, the model is already been trained as well as it can before even finishing one epoch so increasing the number of epochs doesn't affect anything. 
+			From \cref{fig:epochvsaccuracy} it is clear that the number of epochs has almost no effect on accuracy. There is some noise in the data, but for the most part, the accuracy is constant with respect to the number of epochs. This makes sense considering the size of an epoch is 9830. From \cref{fig:etavsaccuracy} we see that the accuracy at $\eta = 0.1$ evens out at 5000. Thus, the model is already been trained as well as it can before even finishing one epoch so increasing the number of epochs doesn't affect anything. The reason you may want to use more epochs is it removes some random variations that are possible if the model is only trained once. 
 		\end{enumerate}
 	\end{solution*}
 	\section{Feature Engineering (40 points)}

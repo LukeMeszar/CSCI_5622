@@ -140,11 +140,12 @@ if __name__ == "__main__":
         counter = 0
         for x,y in zip(data.train_x, data.train_y):
             lr.sgd_update(x,y)
-            if counter in measuring_points:
-                accuracy = lr.progress(data.test_x, data.test_y)
-                print(counter, ",", accuracy[1])
-            counter += 1
-
+            # if counter in measuring_points:
+            #     accuracy = lr.progress(data.test_x, data.test_y)
+            #     print(counter, ",", accuracy[1])
+            # counter += 1
+        accuracy = lr.progress(data.test_x, data.test_y)
+        print(accuracy)
 
 
 

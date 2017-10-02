@@ -68,8 +68,8 @@ class TextLengthTransformer(BaseEstimator, TransformerMixin):
 class pos_words(BaseEstimator, TransformerMixin):
 
     def __init__(self):
-        # self.pos_words = ["absolute", "amazing", "approve", "attractive", "awesome", "beautiful", "brilliant", "creative", "delight", "enchanting", "excellent", "exciting", "fabulous", "fantastic", "favorable", "fun", "friendly", "funny", "genius", "gorgeous", "good", "great", "happy", "imagine", "impress", "joy", "laugh", "love", "marvelous", "master", "masterpiece", "nice", "perfect", "pleasant", "popular", "positive", "remarkable", "respect", "reward", "right", "satisfactory", "simple", "smile", "success", "super", "terrific", "thrill", "victorious", "victory", "whole", "wonderful", "wondrous", "wow", "yes"]
-        self.pos_words = ["absolute", "amazing", "approve", "attractive", "awesome", "beautiful", "brilliant", "creative", "delight", "enchanting", "excellent", "exciting", "fabulous", "fantastic", "favorable", "fun", "friendly", "funny", "genius", "gorgeous", "good", "great"]
+        self.pos_words = ["absolute", "amazing", "approve", "attractive", "awesome", "beautiful", "brilliant", "creative", "delight", "enchanting", "excellent", "exciting", "fabulous", "fantastic", "favorable", "fun", "friendly", "funny", "genius", "gorgeous", "good", "great", "happy", "imagine", "impress", "joy", "laugh", "love", "marvelous", "master", "masterpiece", "nice", "perfect", "pleasant", "popular", "positive", "remarkable", "respect", "reward", "right", "satisfactory", "simple", "smile", "success", "super", "terrific", "thrill", "victorious", "victory", "whole", "wonderful", "wondrous", "wow", "yes"]
+        # self.pos_words = ["absolute", "amazing", "approve", "attractive", "awesome", "beautiful", "brilliant", "creative", "delight", "enchanting", "excellent", "exciting", "fabulous", "fantastic", "favorable", "fun", "friendly", "funny", "genius", "gorgeous", "good", "great"]
 
     def fit(self, examples):
         return self
@@ -169,30 +169,30 @@ class Featurizer:
 
         # TODO: Add any new feature transformers or other features to the FeatureUnion
         self.all_features = FeatureUnion([
-            # ('text_stats', Pipeline([
-            #     ('selector', ItemSelector(key='text')),
-            #     ('text_length', TextLengthTransformer())
-            # ])),
-            # ('ngrams', Pipeline([
-            #     ('selector', ItemSelector(key='text')),
-            #     ('n_grmas', NGrams())
-            # ])),
-            # ('tfidf', Pipeline([
-            #     ('selector', ItemSelector(key='text')),
-            #     ('tfidf', Tfidf())
-            # ])),
-            # ('suffix', Pipeline([
-            #     ('selector', ItemSelector(key='text')),
-            #     ('suffix', Suffixes()),
-            # ])),
+            ('text_stats', Pipeline([
+                ('selector', ItemSelector(key='text')),
+                ('text_length', TextLengthTransformer())
+            ])),
+            ('ngrams', Pipeline([
+                ('selector', ItemSelector(key='text')),
+                ('n_grmas', NGrams())
+            ])),
+            ('tfidf', Pipeline([
+                ('selector', ItemSelector(key='text')),
+                ('tfidf', Tfidf())
+            ])),
+            ('suffix', Pipeline([
+                ('selector', ItemSelector(key='text')),
+                ('suffix', Suffixes()),
+            ])),
             ('pos_words', Pipeline([
                 ('selector', ItemSelector(key='text')),
                 ('positive_words', pos_words()),
             ])),
-            # ('neg_words', Pipeline([
-            #     ('selector', ItemSelector(key='text')),
-            #     ('negative_words', neg_words()),
-            # ])),
+            ('neg_words', Pipeline([
+                ('selector', ItemSelector(key='text')),
+                ('negative_words', neg_words()),
+            ])),
         ])
 
     def train_feature(self, examples):

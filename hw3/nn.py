@@ -41,7 +41,7 @@ class Network:
     def SGD_train(self, train, epochs, eta, lam=0.0, verbose=True, test=None):
         """
         SGD for training parameters
-        epochs is the number of epocs to run
+        epochs is the number of epochs to run
         eta is the learning rate
         lam is the regularization parameter
         If verbose is set will print progressive accuracy updates
@@ -55,7 +55,8 @@ class Network:
                 yk = train[perm[kk]][1]
                 dWs, dbs = self.back_prop(xk, yk)
                 # TODO: Add L2-regularization
-                self.weights = [W - eta*dW for (W, dW) in zip(self.weights, dWs)]
+
+                self.weights = [(1-(eta*lam))*W - eta*dW for (W, dW) in zip(self.weights, dWs)]
                 self.biases = [b - eta*db for (b, db) in zip(self.biases, dbs)]
             if verbose:
                 if epoch==0 or (epoch + 1) % 15 == 0:
@@ -82,16 +83,19 @@ class Network:
             z_list.append(z)
             a = self.g(z)
             a_list.append(a)
-
         # Back propagate deltas to compute derivatives
         # TODO delta  =
+        delta = (a_list[-1]-y)*self.g(z_list[-1]) * (1-self.g(z_list[-1]))
+
         for ell in range(self.L-2,-1,-1):
-            # TODO db_list[ell] =
-            # TODO dW_list[ell] =
-            # TODO delta =
-            pass
+            dW_list[ell] = delta * np.transpose((a_list[ell]))
+            db_list[ell] = delta
+            delta = np.multiply(np.dot(
+                    np.transpose(self.weights[ell]), delta),
+                    self.g_prime(z_list[ell]))
 
         return (dW_list, db_list)
+
 
     def evaluate(self, test):
         """
@@ -135,9 +139,11 @@ def mnist_digit_show(flatimage, outname=None):
 if __name__ == "__main__":
 
     f = gzip.open('../data/tinyTOY.pkl.gz', 'rb') # change path to ../data/tinyMNIST.pkl.gz after debugging
+    #f = gzip.open('../data/tinyMNIST.pkl.gz', 'rb')
     u = pickle._Unpickler(f)
     u.encoding = 'latin1'
     train, test = u.load()
 
     nn = Network([2,30,2])
+    #nn = Network([196,128,10])
     nn.SGD_train(train, epochs=200, eta=0.25, lam=0.0, verbose=True, test=test)

@@ -138,12 +138,12 @@ def mnist_digit_show(flatimage, outname=None):
 
 if __name__ == "__main__":
 
-    f = gzip.open('../data/tinyTOY.pkl.gz', 'rb') # change path to ../data/tinyMNIST.pkl.gz after debugging
-    #f = gzip.open('../data/tinyMNIST.pkl.gz', 'rb')
+    #f = gzip.open('../data/tinyTOY.pkl.gz', 'rb') # change path to ../data/tinyMNIST.pkl.gz after debugging
+    f = gzip.open('../data/tinyMNIST.pkl.gz', 'rb')
     u = pickle._Unpickler(f)
     u.encoding = 'latin1'
     train, test = u.load()
 
-    nn = Network([2,30,2])
-    #nn = Network([196,128,10])
-    nn.SGD_train(train, epochs=200, eta=0.25, lam=0.0, verbose=True, test=test)
+    #nn = Network([2,30,2])
+    nn = Network([196,64,10])
+    nn.SGD_train(train, epochs=195, eta=0.25, lam=0.0, verbose=True, test=test)

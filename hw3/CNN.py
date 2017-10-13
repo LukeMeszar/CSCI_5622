@@ -60,7 +60,7 @@ class CNN:
         self.model = Sequential()
         self.model.add(Conv2D(32,6,6,activation='relu',input_shape=(int(np.sqrt(self.train_x_shape[1])),int(np.sqrt(self.train_x_shape[1])),1)))
         #self.model.add(Conv2D(64, 3, 3,activation='relu'))
-        self.model.add(MaxPool2D(pool_size=(2,2)))
+        self.model.add(MaxPool2D(pool_size=(4,4)))
         self.model.add(Dropout(0.25))
         self.model.add(Flatten())
         self.model.add(Dense(256, activation='relu'))

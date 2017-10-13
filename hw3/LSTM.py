@@ -30,8 +30,8 @@ class RNN:
         # TODO:preprocess training data
         # self.train_x = sequence.pad_sequences(train_x, maxlen=self.example_len)
         # self.test_x = sequence.pad_sequences(test_x, maxlen=self.example_len)
-        self.train_x = sequence.pad_sequences(train_x, maxlen=100)
-        self.test_x = sequence.pad_sequences(test_x, maxlen=100)
+        self.train_x = sequence.pad_sequences(train_x, maxlen=60)
+        self.test_x = sequence.pad_sequences(test_x, maxlen=60)
         self.train_y = train_y
         self.test_y = test_y
 

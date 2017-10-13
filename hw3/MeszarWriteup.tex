@@ -1,0 +1,201 @@
+
+\documentclass[12pt]{article}
+\usepackage{amssymb, amsmath, amsthm, amsfonts}
+\usepackage{epic}
+\usepackage{eepic}
+%\usepackage{hyperref}
+\usepackage{listings}
+\usepackage{float}
+\usepackage{graphicx}
+\usepackage{fancyhdr}
+\usepackage{color}
+\usepackage{enumitem}
+\usepackage[letterpaper, margin=1in]{geometry}
+\usepackage{mathrsfs}
+\usepackage{cleveref}
+
+\newcommand{\C}{\mathbf{C}}
+\newcommand{\R}{\mathbf{R}}
+\newcommand{\Q}{\mathbf{Q}}
+\newcommand{\Z}{\mathbf{Z}}
+\newcommand{\N}{\mathbf{N}}
+\newcommand{\E}{\mathbf{E}}
+\newcommand{\B}{\mathbf{B}}
+\newcommand{\F}{\mathbf{F}}
+\newcommand{\U}{\mathbf{U}}
+\newcommand{\V}{\mathbf{V}}
+\newcommand{\J}{\mathbf{J}}
+\newcommand{\x}{\mathbf{x}}
+\newcommand{\y}{\mathbf{y}}
+\newcommand{\z}{\mathbf{z}}
+\newcommand{\Ib}{\mathbb{I}}
+\newcommand{\Sb}{\mathbf{S}}
+\newcommand{\Cs}{\mathscr{C}}
+\newcommand{\As}{\mathscr{A}}
+\newcommand{\I}{\textnormal{\textbf{I}}}
+\newcommand{\Id}{\dot{\textnormal{\textbf{I}}}}
+\newcommand{\Top}{\textnormal{\textbf{Top}}}
+\newcommand{\hTop}{\textnormal{\textbf{hTop}}}
+\newcommand{\Groups}{\textnormal{\textbf{Groups}}}
+\newcommand{\Set}{\textnormal{\textbf{Set}}}
+\newcommand{\Xib}{\mathbf{\Xi}}
+\newcommand{\Sym}{\text{Sym}}
+\newcommand{\prid}[1]{\langle #1 \rangle}
+\newcommand{\apoly}[1]{a_{#1} + a_{#1}x+ a_{#1}x^2 + \cdots + a_{#1}x^n}
+\newcommand{\dist}{\textnormal{dist}}
+\newcommand{\ti}[1]{\textit{#1}}
+\newcommand{\tb}[1]{\textnormal{\textbf{#1}}}
+\newcommand{\es}{\emptyset}
+\newcommand{\sst}{\subset}
+\newcommand{\ssteq}{\subseteq}
+\newcommand{\func}[3]{#1: #2 \to #3}
+\newcommand{\inte}[1]{\textnormal{int}(#1)}
+\newcommand{\bdr}[1]{\textnormal{bdry}(#1)}
+\newcommand{\ifff}{if and only if }
+\newcommand{\st}{such that }
+\newcommand{\wrt}{with respect to }
+\newcommand{\tspace}[1]{\text{T}_#1}
+\newcommand{\mathdash}{\hbox{-}}
+\newcommand{\diam}[1]{\textnormal{diam}(#1)}
+\newcommand{\setst}{\hspace{1mm} | \hspace{1mm} }
+\newcommand{\supp}{\textnormal{support}}
+\newcommand{\clos}{\textnormal{closure}}
+\newcommand{\rel}{\textnormal{rel }}
+\newcommand{\Hom}{\textnormal{Hom}}
+\newcommand{\obj}{\textnormal{obj}}
+\newcommand{\varlisto}[2]{#1_1,#1_2,\ldots,#1_{#2}}
+\newcommand{\varlistz}[2]{#1_0,#1_1,\ldots,#1_{#2}}
+\newcommand{\finv}[2]{#1^{-1}(#2)}
+\newcommand{\disu}{\rotatebox[origin=c]{90}{$\models$}}
+\newcommand{\rank}{\textnormal{rank }}
+\newcommand{\card}{\textnormal{card }}
+\newcommand{\im}{\textnormal{im }}
+\newcommand{\cls}{\textnormal{cls }}
+\newcommand{\rev}{\textnormal{rev }}
+\newcommand{\defeq}{\mathrel{\stackrel{\makebox[0pt]{\mbox{\normalfont\tiny def}}}{=}}}
+\newcommand{\Err}{\textnormal{Err}}
+\newcommand{\Var}{\textnormal{Var}}
+\newcommand{\Ev}{\textnormal{E}}
+\newcommand{\pii}[1]{\exp(\beta_{#1}^Tx_i)}
+\newcommand{\spii}[1]{\sum_{#1 = 1}^C\exp(\beta_{#1}^Tx_i)}
+\newcommand{\spij}[1]{\sum_{#1 = 1}^C\exp(\beta_{#1}^Tx_{i,j})}
+\newcommand{\dpp}{\partial}
+
+\renewcommand{\epsilon}{\varepsilon}
+
+
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{proposition}{Proposition}[theorem]
+\newtheorem{lemma}[theorem]{Lemma}
+\theoremstyle{definition}
+\newtheorem*{solution*}{Solution}
+\newtheorem*{definition}{Definition}
+\newtheorem*{remark}{Remark}
+\newtheorem*{remarks}{Remarks}
+
+
+\renewcommand\qedsymbol{$\blacksquare$}
+
+\author{Luke Meszar}
+\date{September 15th, 2017}
+\title{CSCI 5622 Homework 1}
+
+\begin{document}
+	\thispagestyle{empty}
+	
+	% --- Header Box --- %
+	\newlength{\boxlength}\setlength{\boxlength}{\textwidth}
+	\addtolength{\boxlength}{-4mm}
+	
+	\begin{center}\framebox{\parbox{\boxlength}{\bf
+				Machine Learning \hfill Homework 3\\
+				CSCI 5622 Fall 2017 \hfill Due Time Oct 13, 2017\\
+				Name: Luke Meszar \hfill CU identitykey: lume0018
+		}}
+	\end{center}
+	\section{Back Propagation (35 Points)}																																									
+	\begin{solution*}\leavevmode
+		\begin{enumerate}[label=\arabic*.,font=\upshape]
+			\item \textit{What is the structure of your neural network (for both tinyTOY and tinyMNIST dataset)?
+				Show the dimensions of the input layer, hidden layer and output layer.}
+			
+			In both cases, there are three layers: an input layer, a hidden layer, and an output layer. 
+			
+			For the tinyTOY data, the size of the input layer is 2, the size of the hidden layer is 30, and the size of the output layer is 2.
+			
+			For the tinyMNIST data, the size of the input layer is 196, the size of the hidden layer is 64, and the size of the output layer is 10.
+			
+			In both cases, the size of the input layer is as reflection of the form of the data; the size of the output layer is the number of categories in the classification; and the size of the hidden layer is a variable that can be changed to affect training accuracy.
+			
+			In both 
+			\item \textit{What the role of the size of the hidden layer on train and test accuracy (plot accuracy vs.
+				size of hidden layer using tinyMNIST dataset)?}
+			\item \textit{How does the number of epochs affect train and test accuracy (plot accuracy vs. epochs using
+					tinyMINST dataset)?}
+		\end{enumerate}
+	\end{solution*}
+	\section{Keras CNN (35pts)}
+	\begin{solution*}\leavevmode
+		\begin{enumerate}[label=\arabic*.,font=\upshape]
+			\item \textit{ Point out at least three layer types you used in your model. Explain what are they used for.} 
+			
+			Some of the layers I used in this model were a 2-dimensional convolution layer, a max pooling layer, a dropout layer, and a fully connected classification layer. The convolution layer applies a number of filters to the input image. Each filter can be thought of as a small lens which is slid over the image. Its use is for detecting features in an image. The neural network learns which filters to use to detect the features it needs for classification.
+			
+			The max pooling layer finds the maximum elements in a local neighborhood after applying the convolution layer. It can in some sense be thought of as finding the most important point in a local neighborhood. It also serves to reduce the dimensionality of the parameter space. 
+			
+			The dropout layer chooses some percentage of the neurons to deactivate on each training instance. This helps to reduce overfitting since it forces the network to use all of the neuron more equally. 
+			
+			Finally, the fully connected (or dense) layer is the layer that actually does the classification. Every neuron in the previous layer is connected to every node in this layer. This layer uses softmax activation with appropriate weights and biases to classify the image. 
+			
+			\item \textit{ How did you improve your model for higher accuracy?}
+			
+			I improved my model in the following ways. I used one-hot encoding, increased the size of the filter in the convolution layer to $6\times 6$ and added a fully connected layer between the dropout layer and the final dense classification layer. This intermediate fully connected layer was more successful when it was 256 neurons wide than when it was 128. I also determined that the adam optimizer performed the best of the ones I tried. 
+			
+			\item \textit{Try different activation functions and batch sizes. Show the corresponding accuracy.}
+			
+			I changed the activation functions in the convulutional layer and in the intermediate dense layer. Here are the results. 
+			
+			\begin{tabular}{cc}
+				Activation & Accuracy \\\hline
+				ReLU & 99.06\% \\
+				eLU & 98.97\% \\
+				tanh & 98.56\% \\
+				selu & 98.40\% \\
+				sigmoid & 98.35\% \\
+				linear & 97.53\% \\
+			\end{tabular}
+		
+		The only significant variation between the activation function was that linear activation performed the worst which is not surprising. It is clear that ReLU performed the best.  
+		
+		When I varied the batch size, I uses the ReLU activation function. The results for different batch sizes is as follows:
+		
+		\begin{tabular}{cc}
+			Batch Size & Accuracy \\\hline
+			32 & 99.09\% \\
+			64 & 98.93\% \\
+			128 & 99.06\% \\
+			256 & 98.99\% \\
+			512 & 98.91\% \\
+			1024 & 98.93\%
+		\end{tabular}
+	
+		Changing the batch size didn't have much affect on the accuracy though a batch size of 32 was the most accurate. 
+		\end{enumerate}
+	\end{solution*}
+	\section{Keras RNN (30pts)}
+	\begin{solution*}\leavevmode
+		\begin{enumerate}[label=\arabic*.,font=\upshape]
+			\item \textit{ What is the purpose of the embedding layer? (Hint: think about the input and the output).}
+			
+			The raw data in the IMDB data set is an array of integers where each number refers to a word in the data set. This data lives in a very large vector space where each word is its own dimension. This is not particular useful since words do not occur in isolation. The embedding layer's job is to do word embedding. The idea is to map the words into a lower dimensional vector space where words that are contextual similar are mapped close to each other. This creates more meaningful features. 
+			
+			\item \textit{What is the effect of the hidden dimension size in LSTM?}
+			
+			\item \textit{Replace LSTM with GRU and compare their performance.}
+			
+			With the model I have, changing LSTM to GRU did not significantly affect the performance. Both performed around 87\% accuracy. 
+		\end{enumerate}
+	\end{solution*}
+\end{document}

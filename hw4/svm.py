@@ -1,5 +1,5 @@
 import numpy as np
-
+import sys
 kINSP = np.array([(1, 8, +1),
                (7, 2, -1),
                (6, -1, -1),
@@ -26,7 +26,8 @@ def weight_vector(x, y, alpha):
     """
 
     w = np.zeros(len(x[0]))
-    # TODO: IMPLEMENT THIS FUNCTION
+    for i in range(len(x)):
+        w+= alpha[i]*y[i]*x[i]
     return w
 
 
@@ -38,7 +39,9 @@ def find_support(x, y, w, b, tolerance=0.001):
     """
 
     support = set()
-    # TODO: IMPLEMENT THIS FUNCTION
+    for i in range(len(x)):
+        if np.isclose(y[i]*(np.dot(w,x[i])+b),1,atol=tolerance):
+            support.add(i)
     return support
 
 
@@ -50,5 +53,7 @@ def find_slack(x, y, w, b):
     """
 
     slack = set()
-    # TODO: IMPLEMENT THIS FUNCTION
+    for i in range(len(x)):
+        if y[i]*(np.dot(x[i],w) + b) < 0:
+            slack.add(i)
     return slack

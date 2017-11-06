@@ -3,6 +3,7 @@ import numpy as np
 
 from svm import weight_vector, find_support, find_slack
 from sklearn.svm import SVC
+from sklearn.model_selection import GridSearchCV
 
 class FoursAndNines:
     """
@@ -38,38 +39,46 @@ class FoursAndNines:
 
 def mnist_digit_show(flatimage, outname=None):
 
-	import matplotlib.pyplot as plt
+    import matplotlib.pyplot as plt
 
-	image = np.reshape(flatimage, (-1,28))
+    image = np.reshape(flatimage, (-1,28))
 
-	plt.matshow(image, cmap=plt.cm.binary)
-	plt.xticks([])
-	plt.yticks([])
-	if outname:
-	    plt.savefig(outname)
-	else:
-	    plt.show()
+    plt.matshow(image, cmap=plt.cm.binary)
+    plt.xticks([])
+    plt.yticks([])
+    if outname:
+        plt.savefig(outname)
+    else:
+        plt.show()
 
 if __name__ == "__main__":
-
-	parser = argparse.ArgumentParser(description='SVM classifier options')
-	parser.add_argument('--limit', type=int, default=-1,
+    parser = argparse.ArgumentParser(description='SVM classifier options')
+    parser.add_argument('--limit', type=int, default=-1,
                         help="Restrict training to this many examples")
-	args = parser.parse_args()
+    args = parser.parse_args()
 
-	data = FoursAndNines("../data/mnist.pkl.gz")
+    data = FoursAndNines("../data/mnist.pkl.gz")
+    grid_params_linear = [{'C': [1, 10, 100, 1000], 'kernel': ['linear']}]
+    #{'C': [1, 10, 100, 1000], 'gamma': [0.001, 0.0001], 'kernel': ['rbf']}]
+    svm = SVC(verbose=True)
+    grid_searched = GridSearchCV(svm,grid_params_linear)
+    grid_searched.fit(data.x_train,data.y_train)
+    print(grid_searched.cv_results_)
 
     # TODO: Use the Sklearn implementation of support vector machines to train a classifier to
     # distinguish 4's from 9's (using the MNIST data from the KNN homework).
     # Use scikit-learn's Grid Search (http://scikit-learn.org/stable/modules/grid_search.html) to help determine
     # optimial hyperparameters for the given model (e.g. C for linear kernel, C and p for polynomial kernel, and C and gamma for RBF).
 
-	# -----------------------------------
-	# Plotting Examples
-	# -----------------------------------
 
-	# Display in on screen
-	mnist_digit_show(data.x_train[ 0,:])
 
-	# Plot image to file
-	#mnist_digit_show(data.x_train[1,:], "mnistfig.png")
+    # -----------------------------------
+    # Plotting Examples
+    # -----------------------------------
+
+
+    # Display in on screen
+    mnist_digit_show(data.x_train[ 0,:])
+
+    # Plot image to file
+    #mnist_digit_show(data.x_train[1,:], "mnistfig.png")

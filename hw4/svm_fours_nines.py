@@ -62,9 +62,9 @@ if __name__ == "__main__":
 
     data = FoursAndNines("../data/mnist.pkl.gz")
     #linear grid search
-    # grid_params_linear = [{'C': [0.05,0.1,0.15], 'kernel': ['linear']}]
+    # grid_params_linear = [{'C': [0.05,0.1,0.2,0.3], 'kernel': ['linear']}]
     # svm = SVC()
-    # clf = GridSearchCV(estimator=svm,param_grid=grid_params_linear,cv=5,n_jobs=4,verbose=3)
+    # clf = GridSearchCV(estimator=svm,param_grid=grid_params_linear,cv=3,n_jobs=4,verbose=3)
     # clf.fit(data.x_train,data.y_train)
     # print("best linear params (C): ", clf.best_params_['C'])
     # y_true,y_pred = data.y_test, clf.predict(data.x_test)
@@ -75,7 +75,7 @@ if __name__ == "__main__":
     # print(best_linear_svm.score(data.x_test,data.y_test))
 
     #polynomial grid search
-    # grid_params_poly = [{'C': [1,100,200,300,400,500, 600,700,800,900,1000,2000,3000,4000,5000,6000,7000,8000,9000], 'kernel': ['poly'],'degree': [1,2,3]}]
+    grid_params_poly = [{'C': [1,100,200,300,400,500, 600,700,800,900,1000,2000,3000,4000,5000,6000,7000,8000,9000], 'kernel': ['poly'],'degree': [1,2,3]}]
     # svm = SVC()
     # clf = GridSearchCV(estimator=svm,param_grid=grid_params_poly,cv=3,n_jobs=8,verbose=3)
     # clf.fit(data.x_train,data.y_train)
@@ -102,7 +102,7 @@ if __name__ == "__main__":
     # best_rbf_svm.fit(data.x_train,data.y_train)
     # print(best_rbf_svm.score(data.x_test,data.y_test))
 
-    # grid_params_all = [{'C': [0.05,0.1,0.15], 'kernel': ['linear']},{'C': [1000,2000,3000,4000,5000], 'kernel': ['poly'],'degree': [2,3,4]},{'C': [10,20,30,40,50], 'kernel': ['rbf'],'gamma': [0.001,0.01,0.1]}]
+    # grid_params_all = [{'C': [0.05,0.1,0.2,0.15], 'kernel': ['linear']},{'C': [1000,2000,3000,4000,5000], 'kernel': ['poly'],'degree': [2,3,4]},{'C': [10,20,30,40,50], 'kernel': ['rbf'],'gamma': [0.001,0.01,0.1]}]
     # svm = SVC()
     # clf = GridSearchCV(estimator=svm,param_grid=grid_params_all,cv=3,n_jobs=8,verbose=3)
     # clf.fit(data.x_train,data.y_train)
@@ -112,12 +112,12 @@ if __name__ == "__main__":
     # best_rbf_svm = SVC(kernel='rbf', C = clf.best_params_['C'],gamma=clf.best_params_['gamma'])
     # best_rbf_svm.fit(data.x_train,data.y_train)
     # print(best_rbf_svm.score(data.x_test,data.y_test))
-    best_svm = SVC(kernel='rbf',C=40,gamma=0.01)
+    best_svm = SVC(kernel='rbf',C=20,gamma=0.01)
     best_svm.fit(data.x_train,data.y_train)
     print(best_svm.score(data.x_test,data.y_test))
     random.shuffle(best_svm.support_)
     for i in range(0,4):
-        filename = 'support_vector' + str(i)
+        filename = 'support_vector_' + str(i)
         mnist_digit_show(data.x_train[best_svm.support_[i]],str(data.y_train[best_svm.support_[i]]),filename)
 
 

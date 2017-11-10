@@ -1,0 +1,526 @@
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6350 64-bit) (preloaded format=pdflatex 2017.8.21)  10 NOV 2017 09:48
+entering extended mode
+**./MeszarWriteup.tex
+(MeszarWriteup.tex
+LaTeX2e <2017-04-15>
+Babel <3.10> and hyphenation patterns for 75 language(s) loaded.
+("C:\Program Files\MiKTeX 2.9\tex\latex\base\article.cls"
+Document Class: article 2014/09/29 v1.4h Standard LaTeX document class
+("C:\Program Files\MiKTeX 2.9\tex\latex\base\size12.clo"
+File: size12.clo 2014/09/29 v1.4h Standard LaTeX file (size option)
+)
+\c@part=\count79
+\c@section=\count80
+\c@subsection=\count81
+\c@subsubsection=\count82
+\c@paragraph=\count83
+\c@subparagraph=\count84
+\c@figure=\count85
+\c@table=\count86
+\abovecaptionskip=\skip41
+\belowcaptionskip=\skip42
+\bibindent=\dimen102
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\amsfonts\amssymb.sty"
+Package: amssymb 2013/01/14 v3.01 AMS font symbols
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\amsfonts\amsfonts.sty"
+Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
+\@emptytoks=\toks14
+\symAMSa=\mathgroup4
+\symAMSb=\mathgroup5
+LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
+(Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
+))
+("C:\Program Files\MiKTeX 2.9\tex\latex\amsmath\amsmath.sty"
+Package: amsmath 2016/11/05 v2.16a AMS math features
+\@mathmargin=\skip43
+
+For additional information on amsmath, use the `?' option.
+("C:\Program Files\MiKTeX 2.9\tex\latex\amsmath\amstext.sty"
+Package: amstext 2000/06/29 v2.01 AMS text
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\amsmath\amsgen.sty"
+File: amsgen.sty 1999/11/30 v2.0 generic functions
+\@emptytoks=\toks15
+\ex@=\dimen103
+))
+("C:\Program Files\MiKTeX 2.9\tex\latex\amsmath\amsbsy.sty"
+Package: amsbsy 1999/11/29 v1.2d Bold Symbols
+\pmbraise@=\dimen104
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\amsmath\amsopn.sty"
+Package: amsopn 2016/03/08 v2.02 operator names
+)
+\inf@bad=\count87
+LaTeX Info: Redefining \frac on input line 213.
+\uproot@=\count88
+\leftroot@=\count89
+LaTeX Info: Redefining \overline on input line 375.
+\classnum@=\count90
+\DOTSCASE@=\count91
+LaTeX Info: Redefining \ldots on input line 472.
+LaTeX Info: Redefining \dots on input line 475.
+LaTeX Info: Redefining \cdots on input line 596.
+\Mathstrutbox@=\box26
+\strutbox@=\box27
+\big@size=\dimen105
+LaTeX Font Info:    Redeclaring font encoding OML on input line 712.
+LaTeX Font Info:    Redeclaring font encoding OMS on input line 713.
+\macc@depth=\count92
+\c@MaxMatrixCols=\count93
+\dotsspace@=\muskip10
+\c@parentequation=\count94
+\dspbrk@lvl=\count95
+\tag@help=\toks16
+\row@=\count96
+\column@=\count97
+\maxfields@=\count98
+\andhelp@=\toks17
+\eqnshift@=\dimen106
+\alignsep@=\dimen107
+\tagshift@=\dimen108
+\tagwidth@=\dimen109
+\totwidth@=\dimen110
+\lineht@=\dimen111
+\@envbody=\toks18
+\multlinegap=\skip44
+\multlinetaggap=\skip45
+\mathdisplay@stack=\toks19
+LaTeX Info: Redefining \[ on input line 2817.
+LaTeX Info: Redefining \] on input line 2818.
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\amscls\amsthm.sty"
+Package: amsthm 2015/03/04 v2.20.2
+\thm@style=\toks20
+\thm@bodyfont=\toks21
+\thm@headfont=\toks22
+\thm@notefont=\toks23
+\thm@headpunct=\toks24
+\thm@preskip=\skip46
+\thm@postskip=\skip47
+\thm@headsep=\skip48
+\dth@everypar=\toks25
+)
+(C:\Users\luke\AppData\Roaming\MiKTeX\2.9\tex\latex\eepic\epic.sty
+Enhancements to Picture Environment. Version 1.2 - Released June 1, 1986
+\@@multicnt=\count99
+\d@lta=\count100
+\@delta=\dimen112
+\@@delta=\dimen113
+\@gridcnt=\count101
+\@joinkind=\count102
+\@dotgap=\dimen114
+\@ddotgap=\dimen115
+\@x@diff=\count103
+\@y@diff=\count104
+\x@diff=\dimen116
+\y@diff=\dimen117
+\@dotbox=\box28
+\num@segments=\count105
+\num@segmentsi=\count106
+\@datafile=\read1
+) (C:\Users\luke\AppData\Roaming\MiKTeX\2.9\tex\latex\eepic\eepic.sty
+Extension to Epic and LaTeX. Version 1.1e - Released Dec 21, 1999
+\@gphlinewidth=\count107
+\@eepictcnt=\count108
+\@tempdimc=\dimen118
+\maxovaldiam=\dimen119
+\@filltype=\box29
+) (C:\Users\luke\AppData\Roaming\MiKTeX\2.9\tex\latex\listings\listings.sty
+("C:\Program Files\MiKTeX 2.9\tex\latex\graphics\keyval.sty"
+Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
+\KV@toks@=\toks26
+)
+\lst@mode=\count109
+\lst@gtempboxa=\box30
+\lst@token=\toks27
+\lst@length=\count110
+\lst@currlwidth=\dimen120
+\lst@column=\count111
+\lst@pos=\count112
+\lst@lostspace=\dimen121
+\lst@width=\dimen122
+\lst@newlines=\count113
+\lst@lineno=\count114
+\lst@maxwidth=\dimen123
+
+(C:\Users\luke\AppData\Roaming\MiKTeX\2.9\tex\latex\listings\lstmisc.sty
+File: lstmisc.sty 2015/06/04 1.6 (Carsten Heinz)
+\c@lstnumber=\count115
+\lst@skipnumbers=\count116
+\lst@framebox=\box31
+)
+(C:\Users\luke\AppData\Roaming\MiKTeX\2.9\tex\latex\listings\listings.cfg
+File: listings.cfg 2015/06/04 1.6 listings configuration
+))
+Package: listings 2015/06/04 1.6 (Carsten Heinz)
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\float\float.sty"
+Package: float 2001/11/08 v1.3d Float enhancements (AL)
+\c@float@type=\count117
+\float@exts=\toks28
+\float@box=\box32
+\@float@everytoks=\toks29
+\@floatcapt=\box33
+)
+(C:\Users\luke\AppData\Roaming\MiKTeX\2.9\tex\latex\subfig\subfig.sty
+Package: subfig 2005/06/28 ver: 1.3 subfig package
+
+(C:\Users\luke\AppData\Roaming\MiKTeX\2.9\tex\latex\caption\caption3.sty
+Package: caption3 2016/05/22 v1.7-166 caption3 kernel (AR)
+Package caption3 Info: TeX engine: e-TeX on input line 67.
+\captionmargin=\dimen124
+\captionmargin@=\dimen125
+\captionwidth=\dimen126
+\caption@tempdima=\dimen127
+\caption@indent=\dimen128
+\caption@parindent=\dimen129
+\caption@hangindent=\dimen130
+)
+\c@KVtest=\count118
+\sf@farskip=\skip49
+\sf@captopadj=\dimen131
+\sf@capskip=\skip50
+\sf@nearskip=\skip51
+\c@subfigure=\count119
+\c@subfigure@save=\count120
+\c@lofdepth=\count121
+\c@subtable=\count122
+\c@subtable@save=\count123
+\c@lotdepth=\count124
+\sf@top=\skip52
+\sf@bottom=\skip53
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\graphics\graphicx.sty"
+Package: graphicx 2014/10/28 v1.0g Enhanced LaTeX Graphics (DPC,SPQR)
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\graphics\graphics.sty"
+Package: graphics 2017/04/14 v1.1b Standard LaTeX Graphics (DPC,SPQR)
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\graphics\trig.sty"
+Package: trig 2016/01/03 v1.10 sin cos tan (DPC)
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\graphics-cfg\graphics.cfg"
+File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
+)
+Package graphics Info: Driver file: pdftex.def on input line 99.
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\graphics-def\pdftex.def"
+File: pdftex.def 2017/01/12 v0.06k Graphics/color for pdfTeX
+
+("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\infwarerr.sty"
+Package: infwarerr 2016/05/16 v1.4 Providing info/warning/error messages (HO)
+)
+("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\ltxcmds.sty"
+Package: ltxcmds 2016/05/16 v1.23 LaTeX kernel commands for general use (HO)
+)
+\Gread@gobject=\count125
+))
+\Gin@req@height=\dimen132
+\Gin@req@width=\dimen133
+)
+(C:\Users\luke\AppData\Roaming\MiKTeX\2.9\tex\latex\fancyhdr\fancyhdr.sty
+Package: fancyhdr 2017/06/30 v3.9a Extensive control of page headers and footer
+s
+\f@nch@headwidth=\skip54
+\f@nch@O@elh=\skip55
+\f@nch@O@erh=\skip56
+\f@nch@O@olh=\skip57
+\f@nch@O@orh=\skip58
+\f@nch@O@elf=\skip59
+\f@nch@O@erf=\skip60
+\f@nch@O@olf=\skip61
+\f@nch@O@orf=\skip62
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\graphics\color.sty"
+Package: color 2016/07/10 v1.1e Standard LaTeX Color (DPC)
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\graphics-cfg\color.cfg"
+File: color.cfg 2016/01/02 v1.6 sample color configuration
+)
+Package color Info: Driver file: pdftex.def on input line 147.
+)
+(C:\Users\luke\AppData\Roaming\MiKTeX\2.9\tex\latex\enumitem\enumitem.sty
+Package: enumitem 2011/09/28 v3.5.2 Customized lists
+\labelindent=\skip63
+\enit@outerparindent=\dimen134
+\enit@toks=\toks30
+\enit@inbox=\box34
+\enitdp@description=\count126
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\geometry\geometry.sty"
+Package: geometry 2010/09/12 v5.6 Page Geometry
+
+("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\ifpdf.sty"
+Package: ifpdf 2017/03/15 v3.2 Provides the ifpdf switch
+)
+("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\ifvtex.sty"
+Package: ifvtex 2016/05/16 v1.6 Detect VTeX and its facilities (HO)
+Package ifvtex Info: VTeX not detected.
+)
+("C:\Program Files\MiKTeX 2.9\tex\generic\ifxetex\ifxetex.sty"
+Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
+)
+\Gm@cnth=\count127
+\Gm@cntv=\count128
+\c@Gm@tempcnt=\count129
+\Gm@bindingoffset=\dimen135
+\Gm@wd@mp=\dimen136
+\Gm@odd@mp=\dimen137
+\Gm@even@mp=\dimen138
+\Gm@layoutwidth=\dimen139
+\Gm@layoutheight=\dimen140
+\Gm@layouthoffset=\dimen141
+\Gm@layoutvoffset=\dimen142
+\Gm@dimlist=\toks31
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\geometry\geometry.cfg"))
+("C:\Program Files\MiKTeX 2.9\tex\latex\jknappen\mathrsfs.sty"
+Package: mathrsfs 1996/01/01 Math RSFS package v1.0 (jk)
+\symrsfs=\mathgroup6
+)
+(C:\Users\luke\AppData\Roaming\MiKTeX\2.9\tex\latex\cleveref\cleveref.sty
+Package: cleveref 2013/12/28 v0.19 Intelligent cross-referencing
+Package cleveref Info: `amsthm' support loaded on input line 2858.
+Package cleveref Info: `listings' support loaded on input line 2950.
+Package cleveref Info: `subfig' support loaded on input line 2983.
+)
+\c@theorem=\count130
+\c@proposition=\count131
+
+(MeszarWriteup.aux)
+\openout1 = `MeszarWriteup.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 107.
+LaTeX Font Info:    ... okay on input line 107.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 107.
+LaTeX Font Info:    ... okay on input line 107.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 107.
+LaTeX Font Info:    ... okay on input line 107.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 107.
+LaTeX Font Info:    ... okay on input line 107.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 107.
+LaTeX Font Info:    ... okay on input line 107.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 107.
+LaTeX Font Info:    ... okay on input line 107.
+\c@lstlisting=\count132
+Package caption Info: Begin \AtBeginDocument code.
+Package caption Info: subfig package v1.3 is loaded.
+Package caption Info: End \AtBeginDocument code.
+
+(C:\Users\luke\AppData\Roaming\MiKTeX\2.9\tex\context\base\supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+\scratchcounter=\count133
+\scratchdimen=\dimen143
+\scratchbox=\box35
+\nofMPsegments=\count134
+\nofMParguments=\count135
+\everyMPshowfont=\toks32
+\MPscratchCnt=\count136
+\MPscratchDim=\dimen144
+\MPnumerator=\count137
+\makeMPintoPDFobject=\count138
+\everyMPtoPDFconversion=\toks33
+) ("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\pdftexcmds.sty"
+Package: pdftexcmds 2017/03/19 v0.25 Utility functions of pdfTeX for LuaTeX (HO
+)
+
+("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\ifluatex.sty"
+Package: ifluatex 2016/05/16 v1.4 Provides the ifluatex switch (HO)
+Package ifluatex Info: LuaTeX not detected.
+)
+Package pdftexcmds Info: LuaTeX not detected.
+Package pdftexcmds Info: \pdf@primitive is available.
+Package pdftexcmds Info: \pdf@ifprimitive is available.
+Package pdftexcmds Info: \pdfdraftmode found.
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\oberdiek\epstopdf-base.sty"
+Package: epstopdf-base 2016/05/15 v2.6 Base part for package epstopdf
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\oberdiek\grfext.sty"
+Package: grfext 2016/05/16 v1.2 Manage graphics extensions (HO)
+
+("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\kvdefinekeys.sty"
+Package: kvdefinekeys 2016/05/16 v1.4 Define keys (HO)
+))
+("C:\Program Files\MiKTeX 2.9\tex\latex\oberdiek\kvoptions.sty"
+Package: kvoptions 2016/05/16 v3.12 Key value format for package options (HO)
+
+("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\kvsetkeys.sty"
+Package: kvsetkeys 2016/05/16 v1.17 Key value parser (HO)
+
+("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\etexcmds.sty"
+Package: etexcmds 2016/05/16 v1.6 Avoid name clashes with e-TeX commands (HO)
+Package etexcmds Info: Could not find \expanded.
+(etexcmds)             That can mean that you are not using pdfTeX 1.50 or
+(etexcmds)             that some package has redefined \expanded.
+(etexcmds)             In the latter case, load this package earlier.
+)))
+Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
+38.
+Package grfext Info: Graphics extension search list:
+(grfext)             [.png,.pdf,.jpg,.mps,.jpeg,.jbig2,.jb2,.PNG,.PDF,.JPG,.JPE
+G,.JBIG2,.JB2,.eps]
+(grfext)             \AppendGraphicsExtensions on input line 456.
+)
+*geometry* driver: auto-detecting
+*geometry* detected driver: pdftex
+*geometry* verbose mode - [ preamble ] result:
+* driver: pdftex
+* paper: letterpaper
+* layout: <same size as paper>
+* layoutoffset:(h,v)=(0.0pt,0.0pt)
+* modes: 
+* h-part:(L,W,R)=(72.26999pt, 469.75502pt, 72.26999pt)
+* v-part:(T,H,B)=(72.26999pt, 650.43001pt, 72.26999pt)
+* \paperwidth=614.295pt
+* \paperheight=794.96999pt
+* \textwidth=469.75502pt
+* \textheight=650.43001pt
+* \oddsidemargin=0.0pt
+* \evensidemargin=0.0pt
+* \topmargin=-37.0pt
+* \headheight=12.0pt
+* \headsep=25.0pt
+* \topskip=12.0pt
+* \footskip=30.0pt
+* \marginparwidth=44.0pt
+* \marginparsep=10.0pt
+* \columnsep=10.0pt
+* \skip\footins=10.8pt plus 4.0pt minus 2.0pt
+* \hoffset=0.0pt
+* \voffset=0.0pt
+* \mag=1000
+* \@twocolumnfalse
+* \@twosidefalse
+* \@mparswitchfalse
+* \@reversemarginfalse
+* (1in=72.27pt=25.4mm, 1cm=28.453pt)
+
+\boxlength=\skip64
+LaTeX Font Info:    Try loading font information for U+msa on input line 118.
+("C:\Program Files\MiKTeX 2.9\tex\latex\amsfonts\umsa.fd"
+File: umsa.fd 2013/01/14 v3.01 AMS symbols A
+)
+LaTeX Font Info:    Try loading font information for U+msb on input line 118.
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\amsfonts\umsb.fd"
+File: umsb.fd 2013/01/14 v3.01 AMS symbols B
+)
+LaTeX Font Info:    Try loading font information for U+rsfs on input line 118.
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\jknappen\ursfs.fd"
+File: ursfs.fd 1998/03/24 rsfs font definition file (jk)
+)
+Overfull \hbox (335.15642pt too wide) in paragraph at lines 131--132
+[]\OT1/cmr/m/n/12 For the poly-no-mial ker-nel, I searched for $\OML/cmm/m/it/1
+2 C$ \OT1/cmr/m/n/12 over the val-ues $\OMS/cmsy/m/n/12 f\OT1/cmr/m/n/12 1\OML/
+cmm/m/it/12 ; \OT1/cmr/m/n/12 100\OML/cmm/m/it/12 ; \OT1/cmr/m/n/12 200\OML/cmm
+/m/it/12 ; \OT1/cmr/m/n/12 300\OML/cmm/m/it/12 ; \OT1/cmr/m/n/12 400\OML/cmm/m/
+it/12 ; \OT1/cmr/m/n/12 500\OML/cmm/m/it/12 ; \OT1/cmr/m/n/12 600\OML/cmm/m/it/
+12 ; \OT1/cmr/m/n/12 700\OML/cmm/m/it/12 ; \OT1/cmr/m/n/12 800\OML/cmm/m/it/12 
+; \OT1/cmr/m/n/12 900\OML/cmm/m/it/12 ; \OT1/cmr/m/n/12 1000\OML/cmm/m/it/12 ; 
+\OT1/cmr/m/n/12 2000\OML/cmm/m/it/12 ; \OT1/cmr/m/n/12 3000\OML/cmm/m/it/12 ; \
+OT1/cmr/m/n/12 4000\OML/cmm/m/it/12 ; \OT1/cmr/m/n/12 5000\OML/cmm/m/it/12 ; \O
+T1/cmr/m/n/12 6000\OML/cmm/m/it/12 ; \OT1/cmr/m/n/12 7000\OML/cmm/m/it/12 ; \OT
+1/cmr/m/n/12 8000\OML/cmm/m/it/12 ; \OT1/cmr/m/n/12 9000\OMS/cmsy/m/n/12 g$
+ []
+
+<support_vector0.png, id=1, 346.896pt x 346.896pt>
+File: support_vector0.png Graphic file (type png)
+ <use support_vector0.png>
+Package pdftex.def Info: support_vector0.png used on input line 151.
+(pdftex.def)             Requested size: 108.40472pt x 108.40472pt.
+
+<support_vector1.png, id=3, 346.896pt x 346.896pt>
+File: support_vector1.png Graphic file (type png)
+ <use support_vector1.png>
+Package pdftex.def Info: support_vector1.png used on input line 152.
+(pdftex.def)             Requested size: 108.40472pt x 108.40472pt.
+
+<support_vector2.png, id=4, 346.896pt x 346.896pt>
+File: support_vector2.png Graphic file (type png)
+ <use support_vector2.png>
+Package pdftex.def Info: support_vector2.png used on input line 153.
+(pdftex.def)             Requested size: 108.40472pt x 108.40472pt.
+
+<support_vector_1.png, id=5, 346.896pt x 346.896pt>
+File: support_vector_1.png Graphic file (type png)
+ <use support_vector_1.png>
+Package pdftex.def Info: support_vector_1.png used on input line 154.
+(pdftex.def)             Requested size: 108.40472pt x 108.40472pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 151--155
+
+ []
+
+[1
+
+{C:/ProgramData/MiKTeX/2.9/pdftex/config/pdftex.map}]
+Missing character: There is no â in font cmti12!
+Missing character: There is no € in font cmti12!
+Missing character: There is no ™ in font cmti12!
+
+
+Package amsmath Warning: Foreign command \atopwithdelims;
+(amsmath)                \frac or \genfrac should be used instead
+(amsmath)                 on input line 177.
+
+[2 <./support_vector0.png> <./support_vector1.png> <./support_vector2.png> <./s
+upport_vector_1.png>] <shatter2-1.png, id=25, 236.38312pt x 237.13594pt>
+File: shatter2-1.png Graphic file (type png)
+
+<use shatter2-1.png>
+Package pdftex.def Info: shatter2-1.png used on input line 197.
+(pdftex.def)             Requested size: 108.40572pt x 108.40358pt.
+ <shatter2-2.png, id=26, 236.38312pt x 237.13594pt>
+File: shatter2-2.png Graphic file (type png)
+
+<use shatter2-2.png>
+Package pdftex.def Info: shatter2-2.png used on input line 198.
+(pdftex.def)             Requested size: 108.40572pt x 108.40358pt.
+ <shatter2-3.png, id=27, 236.38312pt x 236.38312pt>
+File: shatter2-3.png Graphic file (type png)
+
+<use shatter2-3.png>
+Package pdftex.def Info: shatter2-3.png used on input line 199.
+(pdftex.def)             Requested size: 108.40572pt x 108.40572pt.
+ <shatter2-4.png, id=28, 236.38312pt x 237.13594pt>
+File: shatter2-4.png Graphic file (type png)
+
+<use shatter2-4.png>
+Package pdftex.def Info: shatter2-4.png used on input line 200.
+(pdftex.def)             Requested size: 108.40572pt x 108.40358pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 197--201
+
+ []
+
+[3] [4 <./shatter2-1.png> <./shatter2-2.png> <./shatter2-3.png> <./shatter2-4.p
+ng>] [5] (MeszarWriteup.aux) ) 
+Here is how much of TeX's memory you used:
+ 7135 strings out of 493323
+ 114057 string characters out of 3139069
+ 202062 words of memory out of 3000000
+ 10567 multiletter control sequences out of 15000+200000
+ 10660 words of font info for 41 fonts, out of 3000000 for 9000
+ 1141 hyphenation exceptions out of 8191
+ 39i,10n,49p,1182b,582s stack positions out of 5000i,500n,10000p,200000b,50000s
+<C:/Program Files/MiKTeX 2.9/fonts/type1/public/a
+msfonts/cm/cmbx12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/
+cm/cmex10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi1
+2.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:
+/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Program 
+Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Program Files/MiK
+TeX 2.9/fonts/type1/public/amsfonts/cm/cmr6.pfb><C:/Program Files/MiKTeX 2.9/fo
+nts/type1/public/amsfonts/cm/cmr8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/
+public/amsfonts/cm/cmsy10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/a
+msfonts/cm/cmsy8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/c
+m/cmti12.pfb>
+Output written on MeszarWriteup.pdf (5 pages, 185987 bytes).
+PDF statistics:
+ 79 PDF objects out of 1000 (max. 8388607)
+ 0 named destinations out of 1000 (max. 500000)
+ 41 words of extra memory for PDF output out of 10000 (max. 10000000)
+
